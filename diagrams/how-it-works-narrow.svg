@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="344" height="632" viewBox="0 0 344 632" role="img" aria-labelledby="cdp-how-narrow-title cdp-how-narrow-desc" xmlns="http://www.w3.org/2000/svg">
+<title id="cdp-how-narrow-title">How a preview on another domain gets its session</title>
+<desc id="cdp-how-narrow-desc">Five steps. View webpage calls a backend route on domain A that creates a single-use token. The browser is redirected to the page on domain B with the token. Domain B refreshes once so the browser sends its own cookie. Domain B redeems the token and keeps an existing login or starts a preview-only session. The hidden page shows.</desc>
+
+<defs>
+    <marker id="cdp-how-narrow-arrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><polygon points="0 0, 10 4, 0 8" fill="#8A93A0"/></marker>
+</defs>
+
+<rect width="100%" height="100%" fill="#FFFFFF"/>
+
+<line x1="172" y1="104" x2="172" y2="140" stroke="#8A93A0" stroke-width="1.2" marker-end="url(#cdp-how-narrow-arrow)"/>
+<line x1="172" y1="232" x2="172" y2="268" stroke="#8A93A0" stroke-width="1.2" marker-end="url(#cdp-how-narrow-arrow)"/>
+<line x1="172" y1="360" x2="172" y2="396" stroke="#8A93A0" stroke-width="1.2" marker-end="url(#cdp-how-narrow-arrow)"/>
+<line x1="172" y1="488" x2="172" y2="524" stroke="#8A93A0" stroke-width="1.2" marker-end="url(#cdp-how-narrow-arrow)"/>
+
+<rect x="24" y="16" width="296" height="88" rx="6" fill="rgba(26,30,36,0.03)" stroke="#8A93A0" stroke-width="1"/>
+<rect x="36" y="28" width="84" height="22" rx="3" fill="transparent" stroke="rgba(138,147,160,0.60)" stroke-width="0.8"/>
+<text x="78" y="39" fill="#5B6570" font-size="12" font-family="'Source Code Pro',ui-monospace,SFMono-Regular,Menlo,monospace" text-anchor="middle" letter-spacing="0.08em" dy="4">DOMAIN A</text>
+<text x="36" y="72" fill="#1A1E24" font-size="14" font-weight="600" font-family="'Open Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif">View webpage</text>
+<text x="36" y="92" fill="#5B6570" font-size="12" font-family="'Source Code Pro',ui-monospace,SFMono-Regular,Menlo,monospace">creates a single-use token</text>
+
+<rect x="24" y="144" width="296" height="88" rx="6" fill="rgba(91,101,112,0.10)" stroke="#8A93A0" stroke-width="1"/>
+<rect x="36" y="156" width="84" height="22" rx="3" fill="transparent" stroke="rgba(138,147,160,0.60)" stroke-width="0.8"/>
+<text x="78" y="167" fill="#5B6570" font-size="12" font-family="'Source Code Pro',ui-monospace,SFMono-Regular,Menlo,monospace" text-anchor="middle" letter-spacing="0.08em" dy="4">BROWSER</text>
+<text x="36" y="200" fill="#1A1E24" font-size="14" font-weight="600" font-family="'Open Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif">Redirect to domain B</text>
+<text x="36" y="220" fill="#5B6570" font-size="12" font-family="'Source Code Pro',ui-monospace,SFMono-Regular,Menlo,monospace">303 to page?token</text>
+
+<rect x="24" y="272" width="296" height="88" rx="6" fill="rgba(26,30,36,0.03)" stroke="#8A93A0" stroke-width="1"/>
+<rect x="36" y="284" width="84" height="22" rx="3" fill="transparent" stroke="rgba(138,147,160,0.60)" stroke-width="0.8"/>
+<text x="78" y="295" fill="#5B6570" font-size="12" font-family="'Source Code Pro',ui-monospace,SFMono-Regular,Menlo,monospace" text-anchor="middle" letter-spacing="0.08em" dy="4">DOMAIN B</text>
+<text x="36" y="328" fill="#1A1E24" font-size="14" font-weight="600" font-family="'Open Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif">Refresh once</text>
+<text x="36" y="348" fill="#5B6570" font-size="12" font-family="'Source Code Pro',ui-monospace,SFMono-Regular,Menlo,monospace">so B's own cookie is sent</text>
+
+<rect x="24" y="400" width="296" height="88" rx="6" fill="rgba(237,109,5,0.07)" stroke="#ED6D05" stroke-width="1"/>
+<rect x="36" y="412" width="84" height="22" rx="3" fill="transparent" stroke="rgba(237,109,5,0.55)" stroke-width="0.8"/>
+<text x="78" y="423" fill="#A05E00" font-size="12" font-family="'Source Code Pro',ui-monospace,SFMono-Regular,Menlo,monospace" text-anchor="middle" letter-spacing="0.08em" dy="4">DOMAIN B</text>
+<text x="36" y="456" fill="#1A1E24" font-size="14" font-weight="600" font-family="'Open Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif">Redeem token</text>
+<text x="36" y="476" fill="#A05E00" font-size="12" font-family="'Source Code Pro',ui-monospace,SFMono-Regular,Menlo,monospace">keep login or start preview</text>
+
+<rect x="24" y="528" width="296" height="88" rx="6" fill="rgba(237,109,5,0.07)" stroke="#ED6D05" stroke-width="1"/>
+<rect x="36" y="540" width="84" height="22" rx="3" fill="transparent" stroke="rgba(237,109,5,0.55)" stroke-width="0.8"/>
+<text x="78" y="551" fill="#A05E00" font-size="12" font-family="'Source Code Pro',ui-monospace,SFMono-Regular,Menlo,monospace" text-anchor="middle" letter-spacing="0.08em" dy="4">DOMAIN B</text>
+<text x="36" y="584" fill="#1A1E24" font-size="14" font-weight="600" font-family="'Open Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif">Hidden page shows</text>
+<text x="36" y="604" fill="#A05E00" font-size="12" font-family="'Source Code Pro',ui-monospace,SFMono-Regular,Menlo,monospace">preview works on domain B</text>
+
+</svg>

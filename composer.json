@@ -1,0 +1,70 @@
+{
+    "name": "wazum/cross-domain-preview",
+    "type": "typo3-cms-extension",
+    "license": "GPL-2.0-or-later",
+    "description": "TYPO3 extension to preview hidden pages of sites on other domains than the one used to log in to the backend",
+    "homepage": "https://github.com/wazum/typo3-cross-domain-preview",
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "authors": [
+        {
+            "name": "Wolfgang Klinger",
+            "role": "Lead Developer"
+        }
+    ],
+    "keywords": [
+        "typo3",
+        "preview",
+        "multi-site",
+        "multi-domain",
+        "hidden pages",
+        "backend session"
+    ],
+    "require": {
+        "php": "^8.2",
+        "typo3/cms-backend": "^13.4 || ^14.3",
+        "typo3/cms-core": "^13.4 || ^14.3",
+        "typo3/cms-frontend": "^13.4 || ^14.3"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.65",
+        "phpstan/phpstan": "^2.0",
+        "phpunit/phpunit": "^10.5 || ^11.5",
+        "typo3/cms-viewpage": "^13.4 || ^14.3",
+        "typo3/testing-framework": "^9.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Wazum\\CrossDomainPreview\\": "Classes/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Wazum\\CrossDomainPreview\\Tests\\": "Tests/"
+        }
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "typo3/class-alias-loader": true,
+            "typo3/cms-composer-installers": true
+        }
+    },
+    "extra": {
+        "typo3/cms": {
+            "extension-key": "cross_domain_preview",
+            "version": "1.0.0",
+            "web-dir": "public",
+            "Package": {
+                "providesPackages": {}
+            }
+        }
+    },
+    "scripts": {
+        "test:unit": "phpunit -c Tests/phpunit.xml",
+        "test:functional": "typo3DatabaseDriver=pdo_sqlite phpunit -c Tests/phpunit.functional.xml",
+        "phpstan": "phpstan analyse -c phpstan.neon",
+        "php-cs-fixer": "php-cs-fixer fix --config=php-cs-fixer.config.php --dry-run --diff",
+        "php-cs-fixer:fix": "php-cs-fixer fix --config=php-cs-fixer.config.php"
+    }
+}

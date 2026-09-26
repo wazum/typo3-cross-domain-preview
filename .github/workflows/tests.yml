@@ -1,0 +1,80 @@
+name: Tests
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  code-quality:
+    name: Code Quality
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          extensions: intl
+          tools: composer
+
+      - name: Validate composer.json
+        run: composer validate --no-check-publish
+
+      - name: Install dependencies
+        run: composer install --no-interaction
+
+      - name: Run PHPStan
+        run: composer phpstan
+
+      - name: Run PHP CS Fixer
+        run: composer php-cs-fixer
+
+  tests:
+    name: PHP ${{ matrix.php }} - TYPO3 ${{ matrix.typo3 }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          # TYPO3 13.4 LTS
+          - php: '8.2'
+            typo3: '13.4'
+          - php: '8.3'
+            typo3: '13.4'
+          - php: '8.4'
+            typo3: '13.4'
+          # TYPO3 14.3 LTS
+          - php: '8.2'
+            typo3: '14.3'
+          - php: '8.3'
+            typo3: '14.3'
+          - php: '8.4'
+            typo3: '14.3'
+          - php: '8.5'
+            typo3: '14.3'
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: intl, pdo_sqlite
+          tools: composer
+
+      - name: Install dependencies
+        run: |
+          composer require "typo3/cms-core:^${{ matrix.typo3 }}" "typo3/cms-backend:^${{ matrix.typo3 }}" "typo3/cms-frontend:^${{ matrix.typo3 }}" --no-update --no-interaction
+          composer require --dev "typo3/cms-viewpage:^${{ matrix.typo3 }}" --no-update --no-interaction
+          composer install --no-interaction
+
+      - name: Run unit tests
+        run: composer test:unit
+
+      - name: Run functional tests
+        run: composer test:functional

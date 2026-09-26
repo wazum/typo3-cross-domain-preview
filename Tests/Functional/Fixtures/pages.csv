@@ -1,0 +1,6 @@
+"pages"
+,"uid","pid","sorting","title","slug","deleted","hidden","doktype","is_siteroot","perms_everybody"
+,1,0,128,"Site A","/",0,0,1,1,15
+,2,1,128,"A hidden","/a-hidden",0,1,1,0,15
+,3,0,256,"Site B","/",0,0,1,1,15
+,4,3,128,"B hidden","/b-hidden",0,1,1,0,15

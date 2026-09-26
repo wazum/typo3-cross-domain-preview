@@ -1,0 +1,10 @@
+parameters:
+    level: 8
+    paths:
+        - Classes
+        - Tests
+    ignoreErrors:
+        # TransientMemoryBackend takes the context string as first argument on TYPO3 v13 only
+        - identifier: argument.type
+          path: Tests/Unit/SessionTransferTest.php
+          reportUnmatched: false

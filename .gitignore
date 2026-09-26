@@ -1,0 +1,7 @@
+.idea
+.php-cs-fixer.cache
+vendor
+composer.lock
+public
+var
+Tests/.phpunit.cache
