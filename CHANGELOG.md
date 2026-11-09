@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.1] - 2026-11-09
+
 ### Fixed
 
 - The admin panel can be opened, closed and configured on the target domain. The
@@ -37,5 +39,6 @@ The first release, for TYPO3 13.4 and 14.3 on PHP 8.2 and up.
 - The Preview module keeps linking to the page directly, because browsers do not
   store the session cookie in a cross-site iframe.
 
-[Unreleased]: https://github.com/wazum/typo3-cross-domain-preview/compare/1.0.0...main
+[Unreleased]: https://github.com/wazum/typo3-cross-domain-preview/compare/1.0.1...main
+[1.0.1]: https://github.com/wazum/typo3-cross-domain-preview/compare/1.0.0...1.0.1
 [1.0.0]: https://github.com/wazum/typo3-cross-domain-preview/releases/tag/1.0.0
