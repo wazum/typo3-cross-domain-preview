@@ -22,6 +22,7 @@ return [
             'target' => PreviewSessionFilter::class,
             'after' => [
                 'typo3/cms-core/normalized-params-attribute',
+                'typo3/cms-backend/backend-routing',
             ],
             'before' => [
                 'typo3/cms-backend/authentication',

@@ -30,6 +30,7 @@
         "friendsofphp/php-cs-fixer": "^3.65",
         "phpstan/phpstan": "^2.0",
         "phpunit/phpunit": "^10.5 || ^11.5",
+        "typo3/cms-adminpanel": "^13.4 || ^14.3",
         "typo3/cms-viewpage": "^13.4 || ^14.3",
         "typo3/testing-framework": "^9.2"
     },

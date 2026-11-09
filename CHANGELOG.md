@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- The admin panel can be opened, closed and configured on the target domain. The
+  preview session now also counts for its backend AJAX routes
+  `ajax_adminPanel_toggle` and `ajax_adminPanel_saveForm`, and still for no other
+  backend route.
+
 ## [1.0.0] - 2026-09-26
 
 The first release, for TYPO3 13.4 and 14.3 on PHP 8.2 and up.

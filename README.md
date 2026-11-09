@@ -34,8 +34,9 @@ session to that domain ([Forge #110664](https://forge.typo3.org/issues/110664)).
    session there.
 
 The new session only works for the frontend preview. The backend on that
-domain ignores it and still asks for a login. An existing backend login on the
-target domain is kept.
+domain ignores it and still asks for a login, except for the two AJAX routes
+the admin panel uses to open, close and save its settings. An existing backend
+login on the target domain is kept.
 
 Not handled on purpose:
 
