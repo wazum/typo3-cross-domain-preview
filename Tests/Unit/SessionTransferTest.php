@@ -43,6 +43,16 @@ final class SessionTransferTest extends UnitTestCase
     }
 
     #[Test]
+    public function firstTokenCanStillBeRedeemedAfterSecondTokenWasCreated(): void
+    {
+        $firstToken = $this->subject->createToken(42, false, 'site-b.example', '192.0.2.1');
+        $secondToken = $this->subject->createToken(42, false, 'site-c.example', '192.0.2.1');
+
+        self::assertSame(42, $this->subject->redeemToken($firstToken, 'site-b.example', '192.0.2.1')['userId'] ?? null);
+        self::assertSame(42, $this->subject->redeemToken($secondToken, 'site-c.example', '192.0.2.1')['userId'] ?? null);
+    }
+
+    #[Test]
     public function redeemTokenReturnsNullForUnknownToken(): void
     {
         self::assertNull($this->subject->redeemToken('unknown', 'example.org', '192.0.2.1'));
