@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.2] - 2026-11-10
+
 ### Fixed
 
 - A preview link with a section, such as "View" of a content element, scrolls to
@@ -46,6 +48,7 @@ The first release, for TYPO3 13.4 and 14.3 on PHP 8.2 and up.
 - The Preview module keeps linking to the page directly, because browsers do not
   store the session cookie in a cross-site iframe.
 
-[Unreleased]: https://github.com/wazum/typo3-cross-domain-preview/compare/1.0.1...main
+[Unreleased]: https://github.com/wazum/typo3-cross-domain-preview/compare/1.0.2...main
+[1.0.2]: https://github.com/wazum/typo3-cross-domain-preview/compare/1.0.1...1.0.2
 [1.0.1]: https://github.com/wazum/typo3-cross-domain-preview/compare/1.0.0...1.0.1
 [1.0.0]: https://github.com/wazum/typo3-cross-domain-preview/releases/tag/1.0.0
