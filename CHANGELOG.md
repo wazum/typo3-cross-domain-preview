@@ -11,6 +11,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - A preview link with a section, such as "View" of a content element, scrolls to
   that section again.
+- A logout in the backend also ends the preview sessions of the user on the
+  other domains.
 
 ## [1.0.1] - 2026-11-09
 

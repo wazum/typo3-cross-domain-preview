@@ -38,6 +38,11 @@ domain ignores it and still asks for a login, except for the two AJAX routes
 the admin panel uses to open, close and save its settings. An existing backend
 login on the target domain is kept.
 
+A logout in the backend also ends the preview sessions of the user on all
+domains. This needs a session backend whose `getAll()` returns session IDs that
+`remove()` accepts, like the database backend. The Redis session backend of the
+core does not, so there the preview sessions run until they time out.
+
 Not handled on purpose:
 
 - The Preview module, because browsers do not store the session cookie in a
