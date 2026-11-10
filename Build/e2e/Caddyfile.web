@@ -1,0 +1,13 @@
+{
+	local_certs
+	skip_install_trust
+	servers {
+		trusted_proxies static 10.123.45.10
+	}
+}
+
+backend.test, site-b.test, http://web-internal {
+	root * /app/Build/e2e/public
+	php_fastcgi typo3:9000
+	file_server
+}

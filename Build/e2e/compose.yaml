@@ -1,0 +1,68 @@
+name: cross-domain-preview-e2e
+
+services:
+  typo3:
+    build:
+      context: .
+      args:
+        PHP_VERSION: ${PHP_VERSION:-8.3}
+    environment:
+      TYPO3_VERSION: ${TYPO3_VERSION:-14.3}
+    volumes:
+      - ../..:/app
+      - composer-cache:/root/.composer/cache
+    working_dir: /app/Build/e2e
+    command: ./setup.sh
+    healthcheck:
+      test: test -f /app/Build/e2e/var/ready
+      interval: 2s
+      retries: 300
+    networks:
+      default:
+
+  web:
+    image: caddy:2.10
+    volumes:
+      - ../..:/app
+      - ./Caddyfile.web:/etc/caddy/Caddyfile
+    depends_on:
+      typo3:
+        condition: service_healthy
+    networks:
+      default:
+        aliases:
+          - backend.test
+          - site-b.test
+
+  proxy:
+    image: caddy:2.10
+    volumes:
+      - ./Caddyfile.proxy:/etc/caddy/Caddyfile
+    depends_on:
+      - web
+    networks:
+      default:
+        ipv4_address: 10.123.45.10
+        aliases:
+          - site-c.test
+
+  playwright:
+    image: mcr.microsoft.com/playwright:v1.65.0-noble
+    volumes:
+      - ../..:/app
+    working_dir: /app/Build/e2e
+    command: sh -c "npm ci --no-audit --no-fund && npx playwright test --reporter=list"
+    depends_on:
+      - web
+      - proxy
+    networks:
+      default:
+
+volumes:
+  composer-cache:
+
+networks:
+  default:
+    ipam:
+      config:
+        - subnet: 10.123.45.0/24

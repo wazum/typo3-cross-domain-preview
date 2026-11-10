@@ -1,0 +1,8 @@
+rootPageId: 1
+base: 'https://backend.test/'
+languages:
+  -
+    languageId: 0
+    title: English
+    locale: en_US.UTF-8
+    base: /

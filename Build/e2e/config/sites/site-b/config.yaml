@@ -1,0 +1,8 @@
+rootPageId: 2
+base: 'https://site-b.test/'
+languages:
+  -
+    languageId: 0
+    title: English
+    locale: en_US.UTF-8
+    base: /

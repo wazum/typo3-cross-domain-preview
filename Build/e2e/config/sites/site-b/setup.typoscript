@@ -1,0 +1,6 @@
+page = PAGE
+page.10 = TEXT
+page.10.field = title
+page.10.wrap = <h1>|</h1>
+page.20 = TEXT
+page.20.value = <div style="height: 5000px"></div><h2 id="c123">Section far down</h2>

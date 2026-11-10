@@ -78,3 +78,28 @@ jobs:
 
       - name: Run functional tests
         run: composer test:functional
+
+  e2e:
+    name: End-to-end - TYPO3 ${{ matrix.typo3 }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        typo3: ['13.4', '14.3']
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run Playwright
+        working-directory: Build/e2e
+        env:
+          TYPO3_VERSION: ${{ matrix.typo3 }}
+          CI: true
+        run: docker compose run --rm -e CI playwright
+
+      - name: Upload traces
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e2e-traces-${{ matrix.typo3 }}
+          path: Build/e2e/test-results/
