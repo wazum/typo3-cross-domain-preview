@@ -42,6 +42,9 @@ Not handled on purpose:
 
 - The Preview module, because browsers do not store the session cookie in a
   cross-site iframe.
+- The workspace preview, for the same reason. In a workspace, "View webpage"
+  opens the split preview in the backend, and the backend content security
+  policy does not allow other domains in its frames.
 - "Switch user" sessions.
 
 ## Installation
