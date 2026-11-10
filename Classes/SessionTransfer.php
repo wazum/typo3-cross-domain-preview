@@ -24,12 +24,12 @@ final readonly class SessionTransfer
     ) {
     }
 
-    public function createToken(int $userId, bool $mfa, string $host, string $remoteAddress): string
+    public function createToken(int $userId, bool $mfa, string $host, string $remoteAddress, string $section = ''): string
     {
         $token = $this->random->generateRandomHexString(64);
         $this->cache->set(
             hash('sha256', $token),
-            ['userId' => $userId, 'mfa' => $mfa, 'host' => $host, 'ipLock' => $this->createIpLocker()->getSessionIpLock($remoteAddress)],
+            ['userId' => $userId, 'mfa' => $mfa, 'section' => $section, 'host' => $host, 'ipLock' => $this->createIpLocker()->getSessionIpLock($remoteAddress)],
             [],
             30
         );
@@ -38,7 +38,7 @@ final readonly class SessionTransfer
     }
 
     /**
-     * @return array{userId: int, mfa: bool}|null
+     * @return array{userId: int, mfa: bool, section: string}|null
      */
     public function redeemToken(string $token, string $host, string $remoteAddress): ?array
     {
@@ -51,7 +51,7 @@ final readonly class SessionTransfer
             return null;
         }
 
-        return ['userId' => $entry['userId'], 'mfa' => $entry['mfa']];
+        return ['userId' => $entry['userId'], 'mfa' => $entry['mfa'], 'section' => $entry['section']];
     }
 
     private function createIpLocker(): IpLocker

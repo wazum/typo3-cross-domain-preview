@@ -62,6 +62,14 @@ final class SessionTransferAuthenticatorTest extends FunctionalTestCase
     }
 
     #[Test]
+    public function validTokenWithSectionRefreshesToUrlWithSection(): void
+    {
+        $response = $this->requestWithToken($this->get(SessionTransfer::class)->createToken(1, false, 'site-b.example', '127.0.0.1', 'c123'));
+
+        self::assertStringContainsString('url=https://site-b.example/?foo=bar#c123"', (string) $response->getBody());
+    }
+
+    #[Test]
     public function invalidTokenIsPassedOnWithoutSession(): void
     {
         $response = $this->requestWithToken('invalid');

@@ -36,10 +36,10 @@ final class SessionTransferTest extends UnitTestCase
     }
 
     #[Test]
-    public function redeemTokenReturnsUserIdAndMfaStateOfCreatedToken(): void
+    public function redeemTokenReturnsUserIdMfaStateAndSectionOfCreatedToken(): void
     {
-        $token = $this->subject->createToken(42, true, 'example.org', '192.0.2.1');
-        self::assertSame(['userId' => 42, 'mfa' => true], $this->subject->redeemToken($token, 'example.org', '192.0.2.1'));
+        $token = $this->subject->createToken(42, true, 'example.org', '192.0.2.1', 'c123');
+        self::assertSame(['userId' => 42, 'mfa' => true, 'section' => 'c123'], $this->subject->redeemToken($token, 'example.org', '192.0.2.1'));
     }
 
     #[Test]

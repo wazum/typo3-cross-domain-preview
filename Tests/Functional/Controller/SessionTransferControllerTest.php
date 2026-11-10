@@ -35,7 +35,18 @@ final class SessionTransferControllerTest extends FunctionalTestCase
         parse_str((string) parse_url($location, PHP_URL_QUERY), $queryParameters);
         $token = $queryParameters['ADMCMD_sessionTransfer'] ?? null;
         self::assertIsString($token);
-        self::assertSame(['userId' => 1, 'mfa' => false], $this->get(SessionTransfer::class)->redeemToken($token, 'site-b.example', '127.0.0.1'));
+        self::assertSame(['userId' => 1, 'mfa' => false, 'section' => ''], $this->get(SessionTransfer::class)->redeemToken($token, 'site-b.example', '127.0.0.1'));
+    }
+
+    #[Test]
+    public function sectionOfSignedUrlIsStoredWithToken(): void
+    {
+        $response = $this->requestWithUrl($this->sign('https://site-b.example/page#c123', 1));
+
+        parse_str((string) parse_url($response->getHeaderLine('Location'), PHP_URL_QUERY), $queryParameters);
+        $token = $queryParameters['ADMCMD_sessionTransfer'] ?? null;
+        self::assertIsString($token);
+        self::assertSame('c123', $this->get(SessionTransfer::class)->redeemToken($token, 'site-b.example', '127.0.0.1')['section'] ?? null);
     }
 
     #[Test]

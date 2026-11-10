@@ -44,7 +44,7 @@ final readonly class SessionTransferAuthenticator implements MiddlewareInterface
             return $handler->handle($request);
         }
 
-        $response = $this->createRefreshResponse($this->removeToken($request->getUri()));
+        $response = $this->createRefreshResponse($this->removeToken($request->getUri())->withFragment($transfer['section']));
         if ($this->hasSessionToKeep($request, $transfer['userId'])) {
             return $response;
         }
@@ -60,7 +60,7 @@ final readonly class SessionTransferAuthenticator implements MiddlewareInterface
     }
 
     /**
-     * @return array{userId: int, mfa: bool}|null
+     * @return array{userId: int, mfa: bool, section: string}|null
      */
     private function redeemToken(ServerRequestInterface $request, string $token): ?array
     {
@@ -93,7 +93,7 @@ final readonly class SessionTransferAuthenticator implements MiddlewareInterface
     }
 
     /**
-     * @param array{userId: int, mfa: bool} $transfer
+     * @param array{userId: int, mfa: bool, section: string} $transfer
      *
      * @throws SessionNotCreatedException
      */

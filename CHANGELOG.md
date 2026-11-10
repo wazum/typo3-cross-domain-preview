@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- A preview link with a section, such as "View" of a content element, scrolls to
+  that section again.
+
 ## [1.0.1] - 2026-11-09
 
 ### Fixed

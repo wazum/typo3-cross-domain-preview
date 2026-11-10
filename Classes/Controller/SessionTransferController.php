@@ -75,7 +75,8 @@ final readonly class SessionTransferController
             (int) $backendUser->getUserId(),
             (bool) $backendUser->getSessionData('mfa'),
             $targetUri->getHost(),
-            $normalizedParams->getRemoteAddress()
+            $normalizedParams->getRemoteAddress(),
+            $targetUri->getFragment()
         );
     }
 
