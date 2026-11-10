@@ -59,3 +59,9 @@ Not handled on purpose:
 Then update the database schema. The tokens are stored in the cache
 `cross_domain_preview`, which uses the database by default. With several web
 servers and a local cache backend, configure a shared backend for this cache.
+
+A token can only be used once because the cache backend reports whether it
+actually removed the entry. The database, file, APCu and Memcached backends do
+that. The Redis backend of the core does not: it checks and then deletes, so
+two requests at the same time could both use one token. Do not use it for this
+cache.
