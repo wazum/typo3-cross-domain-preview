@@ -36,7 +36,8 @@ session to that domain ([Forge #110664](https://forge.typo3.org/issues/110664)).
 The new session only works for the frontend preview. The backend on that
 domain ignores it and still asks for a login, except for the two AJAX routes
 the admin panel uses to open, close and save its settings. An existing backend
-login on the target domain is kept.
+login on the target domain is kept, and the preview then uses that login, even
+if it belongs to another user.
 
 A logout in the backend also ends the preview sessions of the user on all
 domains. This needs a session backend whose `getAll()` returns session IDs that
