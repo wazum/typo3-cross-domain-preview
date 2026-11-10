@@ -6,7 +6,7 @@
 	}
 }
 
-backend.test, site-b.test, http://web-internal {
+backend.test, site-b.test, site-d.test:8443, http://web-internal {
 	root * /app/Build/e2e/public
 	php_fastcgi typo3:9000
 	file_server

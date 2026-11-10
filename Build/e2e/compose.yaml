@@ -33,6 +33,7 @@ services:
         aliases:
           - backend.test
           - site-b.test
+          - site-d.test
 
   proxy:
     image: caddy:2.10

@@ -34,6 +34,15 @@ test('View webpage shows a hidden page on another domain behind a reverse proxy'
   await expect(preview.locator('h1')).toHaveText('Hidden page on site C');
 });
 
+test('View webpage shows a hidden page on another domain with a non-standard port', async ({ page }) => {
+  await logIn(page);
+
+  const preview = await viewWebpage(page, 7);
+
+  await expect(preview).toHaveURL('https://site-d.test:8443/hidden');
+  await expect(preview.locator('h1')).toHaveText('Hidden page on site D');
+});
+
 test('View of a content element scrolls to it on a hidden page on another domain', async ({ page }) => {
   await logIn(page);
   await page.goto('https://backend.test/typo3/record/edit?edit[tt_content][123]=edit');
